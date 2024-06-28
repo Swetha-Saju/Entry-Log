@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:background="#EAEEEF"
     android:gravity="center"
+    android:padding="50px"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView

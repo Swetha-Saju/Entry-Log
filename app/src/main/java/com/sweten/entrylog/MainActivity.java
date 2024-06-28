@@ -1,5 +1,6 @@
 package com.sweten.entrylog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -30,7 +31,14 @@ AppCompatButton b1;
             public void onClick(View v) {
                 String getusername =e1.getText().toString();
                 String getPassword =e2.getText().toString();
-                Toast.makeText(getApplicationContext(),getusername+getPassword, Toast.LENGTH_SHORT).show();
+               if(getusername.equals("admin") && getPassword.equals("1234"))
+               {
+                   Intent i = new Intent(getApplicationContext(),log.class);
+                   startActivity(i);
+               }
+               else {
+                   Toast.makeText(getApplicationContext(), "invalid credentials", Toast.LENGTH_SHORT).show();
+               }
             }
         });
     }
