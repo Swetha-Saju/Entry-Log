@@ -1,6 +1,7 @@
 package com.sweten.entrylog;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +23,15 @@ AppCompatButton b1;
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences preference=getSharedPreferences("login",MODE_PRIVATE);
+        String username = preference.getString("user",null);
+        if (username!=null)
+        {
+            Intent i = new Intent(getApplicationContext(),log.class);
+            startActivity(i);
+        }
+
+
         e1=(EditText) findViewById(R.id.name);
         e2=(EditText) findViewById(R.id.pass);
         b1=(AppCompatButton) findViewById(R.id.logbtn);
@@ -33,6 +43,10 @@ AppCompatButton b1;
                 String getPassword =e2.getText().toString();
                if(getusername.equals("admin") && getPassword.equals("1234"))
                {
+                   SharedPreferences preference =getSharedPreferences("logapp",MODE_PRIVATE);
+                   SharedPreferences.Editor editor = preference.edit();
+                   editor.putString("user","admin");
+                   editor.apply();
                    Intent i = new Intent(getApplicationContext(),log.class);
                    startActivity(i);
                }
